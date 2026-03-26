@@ -55,6 +55,8 @@ git push origin dev
 ./gradlew spotlessCheck
 ```
 만약 에러가 날 시 build.gradle 파일에 다음 코드를 추가해 주세요.
+반드시 해당 명령어 사용시 자바 21 이하로 설정되어 있어야 합니다. 그 이상 버전은 지원하지 않는 구글 포맷 버전입니다.
+
 ```groovy
 plugins {
 id 'com.diffplug.spotless' version '6.25.0'// 추가 
