@@ -45,6 +45,8 @@ git push origin dev
 이 프로젝트는 일관된 Java 코드 스타일을 유지하기 위해 **Spotless(Google Java Format)** 를 사용합니다.
 `main`, `dev` 브랜치로 PR을 올릴 때 GitHub Actions CI를 통해 자동으로 코드 포맷을 검사하며, 포맷이 어긋난 코드의 머지를 차단합니다.
 
+
+
 ```bash
 # 포맷 자동 정렬 적용 (커밋 전 필수)
 ./gradlew spotlessApply
@@ -52,7 +54,20 @@ git push origin dev
 # 포맷 준수 여부 검사 (CI 검증 명령어)
 ./gradlew spotlessCheck
 ```
+만약 에러가 날 시 build.gradle 파일에 다음 코드를 추가해 주세요.
+```groovy
+plugins {
+id 'com.diffplug.spotless' version '6.25.0'// 추가 
+}
 
+// 파일 맨 아래에 다음 추가 
+spotless {
+    java {
+        googleJavaFormat('1.24.0')
+        target 'src/**/*.java'
+    }
+}
+```
 ---
 
 ## 📄 REST Docs 자동 배포
